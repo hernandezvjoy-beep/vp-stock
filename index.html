@@ -637,8 +637,8 @@ function load() {
 }
 function save() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(stock));
-  renderCatFilters(); renderTable(); updateStats();
-  pushToCloud();
+  updateStats();
+  requestAnimationFrame(()=>{ renderCatFilters(); renderTable(); });
   checkAndSendLowStockEmail();
 }
 
@@ -1456,7 +1456,7 @@ function showCelebration(emoji, message, duration=1800) {
   setTimeout(()=>{ overlay.classList.remove('active'); }, duration);
 }
 function spawnConfetti() {
-  for(let i=0;i<60;i++) {
+  for(let i=0;i<25;i++) {
     const el = document.createElement('div');
     el.className = 'confetti-piece';
     el.style.cssText = `left:${Math.random()*100}vw;top:${-10 - Math.random()*20}px;background:${CONFETTI_COLORS[Math.floor(Math.random()*CONFETTI_COLORS.length)]};transform:rotate(${Math.random()*360}deg) scale(${0.5+Math.random()});width:${6+Math.random()*8}px;height:${6+Math.random()*14}px;border-radius:${Math.random()>0.5?'50%':'2px'};animation-duration:${0.8+Math.random()*1.2}s;animation-delay:${Math.random()*0.4}s;`;
@@ -1498,7 +1498,16 @@ function applyRoleUI(){
   document.getElementById('logoutPill').style.display='flex';
   if(currentUser.role==='user'){document.querySelectorAll('.admin-only').forEach(el=>el.style.setProperty('display','none','important'));}
 }
-function startApp(){load();renderCatFilters();renderTable();updateStats();applyRoleUI();if(currentUser&&currentUser.role==='admin')startAutoSync();barcodeInput.focus();const emoji=currentUser.role==='admin'?'🎉':'👋';const msg=currentUser.role==='admin'?'Welcome back, Admin!':'Welcome, '+currentUser.name+'!';showCelebration(emoji,msg);}
+function startApp(){
+  load(); applyRoleUI(); updateStats(); barcodeInput.focus();
+  requestAnimationFrame(()=>{
+    renderCatFilters(); renderTable();
+    if(currentUser&&currentUser.role==='admin') startAutoSync();
+    const emoji=currentUser.role==='admin'?'🎉':'👋';
+    const msg=currentUser.role==='admin'?'Welcome back, Admin!':'Welcome, '+currentUser.name+'!';
+    showCelebration(emoji,msg);
+  });
+}
 
 // USER MANAGEMENT
 function openManageUsers(){renderUserList();document.getElementById('manageUsersModal').classList.add('active');}
