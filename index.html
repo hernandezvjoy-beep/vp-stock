@@ -1402,12 +1402,6 @@ function doOpenPrintWindow(){
 </div>
 
 
-<!-- CELEBRATION OVERLAY -->
-<div id="celebrationOverlay">
-  <div class="celeb-emoji" id="celebEmoji"></div>
-  <div class="celeb-message" id="celebMessage"></div>
-</div>
-
 </body></html>`); win.document.close();
 }
 
@@ -1476,14 +1470,14 @@ function showAdminLogin(){document.getElementById('staffLoginForm').style.displa
 function showStaffLogin(){document.getElementById('adminLoginForm').style.display='none';document.getElementById('staffLoginForm').style.display='block';document.getElementById('loginError').style.display='none';setTimeout(()=>document.getElementById('staffNameInput').focus(),50);}
 function doAdminLogin(){
   const val=document.getElementById('loginInput').value;const err=document.getElementById('loginError');
-  if(val===APP_PASS){localStorage.setItem(AUTH_KEY,APP_PASS);localStorage.removeItem(SESSION_KEY);currentUser={name:'Admin',role:'admin'};document.getElementById('loginScreen').classList.remove('active');startApp();setTimeout(()=>showCelebration('🎉','Welcome back, Admin!'),300);}
+  if(val===APP_PASS){localStorage.setItem(AUTH_KEY,APP_PASS);localStorage.removeItem(SESSION_KEY);currentUser={name:'Admin',role:'admin'};document.getElementById('loginScreen').classList.remove('active');startApp();}
   else{err.style.display='block';err.textContent='Incorrect password.';document.getElementById('loginInput').value='';document.getElementById('loginInput').focus();}
 }
 function doStaffLogin(){
   const name=document.getElementById('staffNameInput').value.trim();const pin=document.getElementById('staffPinInput').value.trim();const err=document.getElementById('loginError');
   if(!name||!pin){err.style.display='block';err.textContent='Enter your name and PIN.';return;}
   const users=JSON.parse(localStorage.getItem(USERS_KEY)||'[]');const found=users.find(u=>u.name.toLowerCase()===name.toLowerCase()&&u.pin===pin);
-  if(found){localStorage.setItem(SESSION_KEY,JSON.stringify({name:found.name,pin:found.pin}));localStorage.removeItem(AUTH_KEY);currentUser={name:found.name,role:'user'};document.getElementById('loginScreen').classList.remove('active');startApp();setTimeout(()=>showCelebration('👋','Welcome, '+found.name+'!'),300);}
+  if(found){localStorage.setItem(SESSION_KEY,JSON.stringify({name:found.name,pin:found.pin}));localStorage.removeItem(AUTH_KEY);currentUser={name:found.name,role:'user'};document.getElementById('loginScreen').classList.remove('active');startApp();}
   else{err.style.display='block';err.textContent='Name or PIN not recognised.';document.getElementById('staffPinInput').value='';document.getElementById('staffPinInput').focus();}
 }
 function doLogout(){localStorage.removeItem(AUTH_KEY);localStorage.removeItem(SESSION_KEY);currentUser=null;location.reload();}
@@ -1493,7 +1487,7 @@ function applyRoleUI(){
   document.getElementById('logoutPill').style.display='flex';
   if(currentUser.role==='user'){document.querySelectorAll('.admin-only').forEach(el=>el.style.setProperty('display','none','important'));}
 }
-function startApp(){load();renderCatFilters();renderTable();updateStats();applyRoleUI();if(currentUser&&currentUser.role==='admin')startAutoSync();barcodeInput.focus();}
+function startApp(){load();renderCatFilters();renderTable();updateStats();applyRoleUI();if(currentUser&&currentUser.role==='admin')startAutoSync();barcodeInput.focus();const emoji=currentUser.role==='admin'?'🎉':'👋';const msg=currentUser.role==='admin'?'Welcome back, Admin!':'Welcome, '+currentUser.name+'!';showCelebration(emoji,msg);}
 
 // USER MANAGEMENT
 function openManageUsers(){renderUserList();document.getElementById('manageUsersModal').classList.add('active');}
@@ -1601,6 +1595,12 @@ function installApp(){
   </div>
 </div>
 
+
+<!-- CELEBRATION OVERLAY -->
+<div id="celebrationOverlay">
+  <div class="celeb-emoji" id="celebEmoji"></div>
+  <div class="celeb-message" id="celebMessage"></div>
+</div>
 </body>
 </html>
                                                                                                                                                                                                                                           
