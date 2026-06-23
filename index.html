@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>VP Stock Manager</title>
 <meta name="description" content="Victorian Projects QR Stock Manager">
-<meta name="theme-color" content="#4338ca">
+<meta name="theme-color" content="#1b3a5c">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -16,27 +16,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', sans-serif; background: #f5f7ff; color: #1e1b4b; min-height: 100vh; }
+body { font-family: 'Inter', sans-serif; background: #f5f7ff; color: #0f2137; min-height: 100vh; }
 
 /* LOGIN */
-#loginScreen { display:none; position:fixed; inset:0; background:linear-gradient(135deg,#4338ca 0%,#6d28d9 50%,#7c3aed 100%); z-index:9999; flex-direction:column; align-items:center; justify-content:center; padding:24px; }
+#loginScreen { display:none; position:fixed; inset:0; background:linear-gradient(135deg,#0f2137 0%,#1b3a5c 50%,#2563a8 100%); z-index:9999; flex-direction:column; align-items:center; justify-content:center; padding:24px; }
 #loginScreen.active { display:flex; }
-.login-box { background:white; border-radius:24px; padding:40px 36px; width:100%; max-width:380px; box-shadow:0 32px 80px rgba(30,27,75,0.3); text-align:center; }
-.login-logo { width:72px; height:72px; background:linear-gradient(135deg,#4338ca,#7c3aed); border-radius:20px; display:flex; align-items:center; justify-content:center; font-size:2rem; margin:0 auto 20px; }
-.login-box h1 { font-size:1.4rem; font-weight:900; color:#1e1b4b; margin-bottom:4px; }
+.login-box { background:white; border-radius:24px; padding:40px 36px; width:100%; max-width:380px; box-shadow:0 32px 80px rgba(15,33,55,0.3); text-align:center; }
+.login-logo { width:72px; height:72px; background:linear-gradient(135deg,#1b3a5c,#2563a8); border-radius:20px; display:flex; align-items:center; justify-content:center; font-size:2rem; margin:0 auto 20px; }
+.login-box h1 { font-size:1.4rem; font-weight:900; color:#0f2137; margin-bottom:4px; }
 .login-box p { color:#9ca3af; font-size:0.88rem; margin-bottom:28px; }
-.login-input { width:100%; padding:14px 16px; border:1.5px solid #e5e7eb; border-radius:12px; font-size:1rem; font-family:'Inter',sans-serif; outline:none; color:#1e1b4b; text-align:center; letter-spacing:2px; transition:border-color 0.2s; margin-bottom:12px; }
-.login-input:focus { border-color:#6d28d9; }
-.login-btn { width:100%; padding:15px; background:linear-gradient(135deg,#4338ca,#6d28d9); color:white; border:none; border-radius:12px; font-size:1rem; font-weight:800; font-family:'Inter',sans-serif; cursor:pointer; box-shadow:0 4px 16px rgba(109,40,217,0.3); transition:transform 0.15s; }
+.login-input { width:100%; padding:14px 16px; border:1.5px solid #e5e7eb; border-radius:12px; font-size:1rem; font-family:'Inter',sans-serif; outline:none; color:#0f2137; text-align:center; letter-spacing:2px; transition:border-color 0.2s; margin-bottom:12px; }
+.login-input:focus { border-color:#1b3a5c; }
+.login-btn { width:100%; padding:15px; background:linear-gradient(135deg,#1b3a5c,#2563a8); color:white; border:none; border-radius:12px; font-size:1rem; font-weight:800; font-family:'Inter',sans-serif; cursor:pointer; box-shadow:0 4px 16px rgba(27,58,92,0.3); transition:transform 0.15s; }
 .login-btn:hover { transform:translateY(-2px); }
 .login-error { color:#ef4444; font-size:0.85rem; font-weight:600; margin-top:10px; display:none; }
 
 /* HEADER */
-header { background: linear-gradient(135deg,#4338ca 0%,#6d28d9 50%,#7c3aed 100%); padding:0; position:relative; overflow:hidden; padding-top:env(safe-area-inset-top); }
+header { background: linear-gradient(135deg,#0f2137 0%,#1b3a5c 50%,#2563a8 100%); padding:0; position:relative; overflow:hidden; padding-top:env(safe-area-inset-top); }
 header::before { content:''; position:absolute; top:-60px; right:-60px; width:280px; height:280px; background:rgba(255,255,255,0.06); border-radius:50%; }
 header::after  { content:''; position:absolute; bottom:-80px; left:30%; width:200px; height:200px; background:rgba(255,255,255,0.04); border-radius:50%; }
 .header-inner { max-width:1000px; margin:0 auto; padding:28px 24px 24px; display:flex; align-items:center; justify-content:space-between; position:relative; z-index:1; flex-wrap:wrap; gap:12px; }
-.header-logo { width:46px; height:46px; background:rgba(255,255,255,0.2); border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin-right:4px; flex-shrink:0; border:1.5px solid rgba(255,255,255,0.3); }
+.header-logo { width:68px; height:68px; background:white url('data:image/png;base64,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') no-repeat center center; background-size:cover; border-radius:50%; flex-shrink:0; box-shadow:0 2px 12px rgba(0,0,0,0.25); }
 .header-text-group { display:flex; flex-direction:column; }
 .header-left { display:flex; align-items:center; gap:14px; }
 .header-left h1 { color:white; font-size:1.7rem; font-weight:900; letter-spacing:-0.5px; text-shadow:0 2px 8px rgba(0,0,0,0.2); }
@@ -47,19 +47,19 @@ header::after  { content:''; position:absolute; bottom:-80px; left:30%; width:20
 
 /* STATS */
 .stats-row { max-width:1000px; margin:0 auto; padding:16px 24px 0; display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-.stat-card { background:white; border-radius:16px; padding:20px 24px; box-shadow:0 4px 24px rgba(99,87,210,0.12); display:flex; align-items:center; gap:16px; }
+.stat-card { background:white; border-radius:16px; padding:20px 24px; box-shadow:0 4px 24px rgba(27,58,92,0.12); display:flex; align-items:center; gap:16px; }
 .stat-icon { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0; }
-.stat-icon.purple { background:linear-gradient(135deg,#ede9fe,#ddd6fe); }
+.stat-icon.blue { background:linear-gradient(135deg,#dbeafe,#bfdbfe); }
 .stat-icon.green  { background:linear-gradient(135deg,#d1fae5,#a7f3d0); }
 .stat-icon.orange { background:linear-gradient(135deg,#ffedd5,#fed7aa); }
 .stat-info p  { font-size:0.78rem; color:#9ca3af; font-weight:600; text-transform:uppercase; letter-spacing:0.6px; }
-.stat-info h3 { font-size:1.9rem; font-weight:900; color:#1e1b4b; line-height:1; margin-top:2px; }
+.stat-info h3 { font-size:1.9rem; font-weight:900; color:#0f2137; line-height:1; margin-top:2px; }
 
 /* CONTAINER */
 .container { max-width:1000px; margin:0 auto; padding:0 24px 40px; }
 
 /* SCAN CARD */
-.scan-card { background:linear-gradient(135deg,#4338ca,#7c3aed); border-radius:20px; padding:36px; text-align:center; margin-bottom:20px; position:relative; overflow:hidden; box-shadow:0 8px 32px rgba(99,87,210,0.3); }
+.scan-card { background:linear-gradient(135deg,#1b3a5c,#2563a8); border-radius:20px; padding:36px; text-align:center; margin-bottom:20px; position:relative; overflow:hidden; box-shadow:0 8px 32px rgba(27,58,92,0.3); }
 .scan-card::before { content:''; position:absolute; top:-40px; right:-40px; width:160px; height:160px; background:rgba(255,255,255,0.07); border-radius:50%; }
 .scan-card::after  { content:''; position:absolute; bottom:-50px; left:-20px; width:140px; height:140px; background:rgba(255,255,255,0.05); border-radius:50%; }
 .scan-card-inner { position:relative; z-index:1; }
@@ -70,46 +70,49 @@ header::after  { content:''; position:absolute; bottom:-80px; left:30%; width:20
 #barcodeInput::placeholder { color:rgba(255,255,255,0.5); letter-spacing:1px; font-size:0.9rem; font-weight:400; }
 #barcodeInput:focus { border-color:rgba(255,255,255,0.7); background:rgba(255,255,255,0.2); }
 .scan-hint { color:rgba(255,255,255,0.55); font-size:0.8rem; margin-top:10px; font-weight:500; }
-.btn-camera { margin-top:18px; padding:14px 32px; background:white; color:#6d28d9; border:none; border-radius:12px; font-size:1rem; font-weight:800; font-family:'Inter',sans-serif; cursor:pointer; transition:transform 0.15s,box-shadow 0.15s; box-shadow:0 4px 20px rgba(0,0,0,0.15); }
+.btn-camera { margin-top:18px; padding:14px 32px; background:white; color:#1b3a5c; border:none; border-radius:12px; font-size:1rem; font-weight:800; font-family:'Inter',sans-serif; cursor:pointer; transition:transform 0.15s,box-shadow 0.15s; box-shadow:0 4px 20px rgba(0,0,0,0.15); }
 .btn-camera:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(0,0,0,0.2); }
 
 /* CAMERA OVERLAY */
 #cameraOverlay { display:none; position:fixed; inset:0; background:#000; z-index:500; flex-direction:column; align-items:center; justify-content:center; }
 #cameraOverlay.active { display:flex; }
 #cameraVideo { width:100%; max-width:480px; display:block; }
-.camera-frame { position:absolute; width:220px; height:220px; border:3px solid #a78bfa; border-radius:16px; box-shadow:0 0 0 9999px rgba(0,0,0,0.55); pointer-events:none; }
+.camera-frame { position:absolute; width:220px; height:220px; border:3px solid #60a5fa; border-radius:16px; box-shadow:0 0 0 9999px rgba(0,0,0,0.55); pointer-events:none; }
 .camera-corner { position:absolute; width:28px; height:28px; border-color:white; border-style:solid; }
 .camera-corner.tl { top:-3px; left:-3px; border-width:4px 0 0 4px; border-radius:4px 0 0 0; }
 .camera-corner.br { bottom:-3px; right:-3px; border-width:0 4px 4px 0; border-radius:0 0 4px 0; }
 .camera-hint { position:absolute; bottom:130px; color:rgba(255,255,255,0.8); font-size:0.9rem; font-weight:600; text-align:center; padding:0 24px; }
-.camera-status { position:absolute; top:60px; background:rgba(0,0,0,0.6); color:#a78bfa; font-size:0.8rem; font-weight:700; padding:6px 16px; border-radius:20px; letter-spacing:1px; }
+.camera-status { position:absolute; top:60px; background:rgba(0,0,0,0.6); color:#60a5fa; font-size:0.8rem; font-weight:700; padding:6px 16px; border-radius:20px; letter-spacing:1px; }
+.take-preset-btn { flex:1; padding:10px 6px; background:#f3f4f6; border:1.5px solid #e5e7eb; border-radius:10px; font-size:0.88rem; font-weight:700; font-family:Inter,sans-serif; cursor:pointer; color:#374151; transition:all 0.15s; }
+.take-preset-btn.active { background:linear-gradient(135deg,#1b3a5c,#2563a8); color:white; border-color:#1b3a5c; }
+.take-preset-btn:hover { border-color:#1b3a5c; color:#1b3a5c; }
 .btn-close-camera { position:absolute; bottom:48px; padding:14px 40px; background:rgba(255,255,255,0.12); color:white; border:1.5px solid rgba(255,255,255,0.25); border-radius:40px; font-size:1rem; font-weight:700; font-family:'Inter',sans-serif; cursor:pointer; }
 
 /* TOOLBAR */
 .toolbar { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
 .btn-tool { display:flex; align-items:center; gap:7px; padding:10px 18px; background:white; border:1.5px solid #e5e7eb; border-radius:10px; font-size:0.85rem; font-weight:600; font-family:'Inter',sans-serif; cursor:pointer; color:#374151; transition:all 0.15s; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
-.btn-tool:hover       { border-color:#6d28d9; color:#6d28d9; background:#faf5ff; transform:translateY(-1px); }
+.btn-tool:hover       { border-color:#1b3a5c; color:#1b3a5c; background:#eff6ff; transform:translateY(-1px); }
 .btn-tool.blue:hover  { border-color:#3b82f6; color:#3b82f6; background:#eff6ff; }
 .btn-tool.red:hover   { border-color:#ef4444; color:#ef4444; background:#fff5f5; }
 .btn-tool.green:hover { border-color:#10b981; color:#10b981; background:#f0fdf4; }
 .btn-tool-menu { display:flex; align-items:center; gap:7px; padding:10px 18px; background:white; border:1.5px solid #e5e7eb; border-radius:10px; font-size:0.85rem; font-weight:600; font-family:'Inter',sans-serif; cursor:pointer; color:#374151; transition:all 0.15s; box-shadow:0 1px 4px rgba(0,0,0,0.06); }
-.btn-tool-menu:hover { border-color:#6d28d9; color:#6d28d9; background:#faf5ff; }
+.btn-tool-menu:hover { border-color:#1b3a5c; color:#1b3a5c; background:#eff6ff; }
 
 /* CATEGORY FILTERS */
 .cat-filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
 .cat-btn { padding:7px 16px; border-radius:20px; border:1.5px solid #e5e7eb; background:white; font-size:0.8rem; font-weight:600; font-family:'Inter',sans-serif; cursor:pointer; color:#6b7280; transition:all 0.15s; }
-.cat-btn:hover  { border-color:#6d28d9; color:#6d28d9; }
-.cat-btn.active { background:#6d28d9; border-color:#6d28d9; color:white; }
+.cat-btn:hover  { border-color:#1b3a5c; color:#1b3a5c; }
+.cat-btn.active { background:#1b3a5c; border-color:#1b3a5c; color:white; }
 
 /* STOCK CARD */
-.stock-card { background:white; border-radius:20px; box-shadow:0 4px 24px rgba(99,87,210,0.08); overflow:hidden; }
+.stock-card { background:white; border-radius:20px; box-shadow:0 4px 24px rgba(27,58,92,0.08); overflow:hidden; }
 .stock-header { padding:22px 28px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #f3f4f6; background:linear-gradient(to right,#fafbff,white); flex-wrap:wrap; gap:12px; }
-.stock-header-left h2 { font-size:1rem; font-weight:800; color:#1e1b4b; }
+.stock-header-left h2 { font-size:1rem; font-weight:800; color:#0f2137; }
 .stock-header-left p  { font-size:0.78rem; color:#9ca3af; margin-top:2px; }
 .search-wrap { position:relative; }
 .search-wrap::before { content:'🔍'; position:absolute; left:12px; top:50%; transform:translateY(-50%); font-size:0.85rem; pointer-events:none; }
 .search-box { padding:9px 14px 9px 34px; border:1.5px solid #e5e7eb; border-radius:10px; font-size:0.88rem; font-family:'Inter',sans-serif; outline:none; width:220px; transition:border-color 0.2s; color:#374151; }
-.search-box:focus { border-color:#6d28d9; }
+.search-box:focus { border-color:#1b3a5c; }
 
 table { width:100%; border-collapse:collapse; }
 thead { background:#f9fafb; }
@@ -117,28 +120,28 @@ th { padding:11px 20px; text-align:left; font-size:0.72rem; font-weight:700; tex
 td { padding:15px 20px; border-bottom:1px solid #f9fafb; font-size:0.9rem; color:#374151; }
 tr:last-child td { border-bottom:none; }
 tbody tr { transition:background 0.1s; }
-tbody tr:hover td { background:#faf5ff; }
+tbody tr:hover td { background:#eff6ff; }
 
-.item-name-cell { font-weight:700; color:#1e1b4b; font-size:0.93rem; }
+.item-name-cell { font-weight:700; color:#0f2137; font-size:0.93rem; }
 .barcode-cell { font-family:monospace; font-size:0.8rem; color:#9ca3af; background:#f9fafb; padding:3px 8px; border-radius:5px; display:inline-block; }
-.qty-value { font-size:1.2rem; font-weight:900; color:#1e1b4b; }
+.qty-value { font-size:1.2rem; font-weight:900; color:#0f2137; }
 .badge { display:inline-flex; align-items:center; gap:4px; padding:4px 12px; border-radius:20px; font-size:0.75rem; font-weight:700; }
 .badge-ok   { background:#d1fae5; color:#065f46; }
 .badge-low  { background:#ffedd5; color:#9a3412; }
 .badge-zero { background:#fee2e2; color:#991b1b; }
-.cat-badge  { display:inline-block; padding:2px 8px; border-radius:6px; font-size:0.7rem; font-weight:700; background:#ede9fe; color:#6d28d9; margin-top:3px; }
-.cat-group-header td { padding:10px 20px 6px; font-size:0.72rem; font-weight:800; text-transform:uppercase; letter-spacing:1.2px; color:#6d28d9; background:#faf5ff; border-bottom:1px solid #ede9fe; }
+.cat-badge  { display:inline-block; padding:2px 8px; border-radius:6px; font-size:0.7rem; font-weight:700; background:#dbeafe; color:#1b3a5c; margin-top:3px; }
+.cat-group-header td { padding:10px 20px 6px; font-size:0.72rem; font-weight:800; text-transform:uppercase; letter-spacing:1.2px; color:#1b3a5c; background:#eff6ff; border-bottom:1px solid #dbeafe; }
 
 .photo-cell { width:64px; height:64px; border-radius:12px; overflow:hidden; cursor:pointer; position:relative; flex-shrink:0; background:#f3f4f6; border:2px dashed #e5e7eb; display:flex; align-items:center; justify-content:center; transition:border-color 0.2s,background 0.2s; }
-.photo-cell:hover { border-color:#6d28d9; background:#faf5ff; }
+.photo-cell:hover { border-color:#1b3a5c; background:#eff6ff; }
 .photo-cell img { width:100%; height:100%; object-fit:cover; display:block; }
 .photo-cell .photo-placeholder { font-size:1.4rem; opacity:0.4; }
-.photo-cell .photo-overlay { position:absolute; inset:0; background:rgba(109,40,217,0.7); color:white; font-size:0.65rem; font-weight:700; display:none; align-items:center; justify-content:center; text-align:center; border-radius:10px; }
+.photo-cell .photo-overlay { position:absolute; inset:0; background:rgba(27,58,92,0.7); color:white; font-size:0.65rem; font-weight:700; display:none; align-items:center; justify-content:center; text-align:center; border-radius:10px; }
 .photo-cell:hover .photo-overlay { display:flex; }
 .qr-cell canvas, .qr-cell img { width:56px !important; height:56px !important; display:block; border-radius:4px; }
 
 .btn-row-action { background:none; border:none; width:32px; height:32px; border-radius:8px; cursor:pointer; font-size:0.9rem; transition:all 0.15s; color:#d1d5db; }
-.btn-row-action:hover.edit { background:#ede9fe; color:#6d28d9; }
+.btn-row-action:hover.edit { background:#dbeafe; color:#1b3a5c; }
 .btn-row-action:hover.del  { background:#fee2e2; color:#dc2626; }
 
 .empty-state { text-align:center; padding:70px 20px; color:#d1d5db; }
@@ -151,7 +154,7 @@ tbody tr:hover td { background:#faf5ff; }
 .fullscreen-overlay.active { display:flex; }
 @keyframes fadeIn { from{opacity:0;transform:scale(0.97);} to{opacity:1;transform:scale(1);} }
 
-#stepAction { background:linear-gradient(160deg,#1e1b4b 0%,#312e81 60%,#4338ca 100%); }
+#stepAction { background:linear-gradient(160deg,#0f2137 0%,#312e81 60%,#1b3a5c 100%); }
 .fs-cancel-btn { position:absolute; top:24px; right:28px; background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); border:1px solid rgba(255,255,255,0.15); border-radius:10px; padding:9px 18px; font-size:0.85rem; font-weight:600; font-family:'Inter',sans-serif; cursor:pointer; }
 .fs-cancel-btn:hover { background:rgba(255,255,255,0.18); color:white; }
 .fs-item-label { color:rgba(255,255,255,0.45); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:3px; margin-bottom:12px; }
@@ -172,10 +175,10 @@ tbody tr:hover td { background:#faf5ff; }
 .fs-action-header { font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:3px; margin-bottom:10px; padding:6px 16px; border-radius:20px; }
 .fs-action-header.add { background:#d1fae5; color:#065f46; }
 .fs-action-header.sub { background:#fee2e2; color:#991b1b; }
-.fs-qty-item-name { font-size:1.8rem; font-weight:900; color:#1e1b4b; margin-bottom:6px; text-align:center; padding:0 32px; }
+.fs-qty-item-name { font-size:1.8rem; font-weight:900; color:#0f2137; margin-bottom:6px; text-align:center; padding:0 32px; }
 .fs-qty-current { color:#9ca3af; font-size:0.9rem; margin-bottom:52px; }
 .fs-qty-label { font-size:0.85rem; color:#9ca3af; margin-bottom:12px; font-weight:600; text-transform:uppercase; letter-spacing:1px; }
-.fs-qty-input { font-size:5.5rem; font-weight:900; font-family:'Inter',sans-serif; color:#1e1b4b; border:none; border-bottom:4px solid #6d28d9; background:transparent; text-align:center; width:260px; outline:none; margin-bottom:52px; padding-bottom:8px; }
+.fs-qty-input { font-size:5.5rem; font-weight:900; font-family:'Inter',sans-serif; color:#0f2137; border:none; border-bottom:4px solid #1b3a5c; background:transparent; text-align:center; width:260px; outline:none; margin-bottom:52px; padding-bottom:8px; }
 .fs-confirm-btn { width:300px; padding:20px; font-size:1.1rem; font-weight:800; font-family:'Inter',sans-serif; color:white; border:none; border-radius:16px; cursor:pointer; transition:transform 0.15s,box-shadow 0.15s; margin-bottom:16px; }
 .fs-confirm-btn.add { background:linear-gradient(135deg,#059669,#10b981); box-shadow:0 8px 24px rgba(16,185,129,0.35); }
 .fs-confirm-btn.add:hover { transform:translateY(-2px); }
@@ -185,22 +188,22 @@ tbody tr:hover td { background:#faf5ff; }
 .fs-back-btn:hover { color:#374151; background:#f3f4f6; }
 
 /* MODALS */
-.modal-overlay { display:none; position:fixed; inset:0; background:rgba(30,27,75,0.5); z-index:300; align-items:center; justify-content:center; backdrop-filter:blur(4px); }
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(15,33,55,0.5); z-index:300; align-items:center; justify-content:center; backdrop-filter:blur(4px); }
 .modal-overlay.active { display:flex; }
-.modal { background:white; border-radius:24px; padding:36px; width:90%; max-width:460px; box-shadow:0 32px 80px rgba(30,27,75,0.25); animation:popIn 0.2s ease; max-height:90vh; overflow-y:auto; }
+.modal { background:white; border-radius:24px; padding:36px; width:90%; max-width:460px; box-shadow:0 32px 80px rgba(15,33,55,0.25); animation:popIn 0.2s ease; max-height:90vh; overflow-y:auto; }
 @keyframes popIn { from{transform:scale(0.92) translateY(10px);opacity:0;} to{transform:scale(1) translateY(0);opacity:1;} }
 .modal-icon { font-size:2rem; margin-bottom:12px; }
-.modal h2 { font-size:1.3rem; font-weight:800; color:#1e1b4b; margin-bottom:4px; }
+.modal h2 { font-size:1.3rem; font-weight:800; color:#0f2137; margin-bottom:4px; }
 .modal > p { color:#9ca3af; font-size:0.88rem; margin-bottom:24px; }
 .form-field { margin-bottom:16px; }
 .form-field label { display:block; font-size:0.8rem; font-weight:700; color:#6b7280; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px; }
-.form-field input { width:100%; padding:12px 14px; border:1.5px solid #e5e7eb; border-radius:10px; font-size:0.95rem; font-family:'Inter',sans-serif; outline:none; color:#1e1b4b; transition:border-color 0.2s; }
-.form-field input:focus { border-color:#6d28d9; }
-.form-field select { width:100%; padding:12px 14px; border:1.5px solid #e5e7eb; border-radius:10px; font-size:0.95rem; font-family:'Inter',sans-serif; outline:none; color:#1e1b4b; background:white; transition:border-color 0.2s; appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; cursor:pointer; }
-.form-field select:focus { border-color:#6d28d9; }
-.barcode-display { background:#faf5ff; border:1.5px solid #ddd6fe; border-radius:10px; padding:11px 14px; font-family:monospace; font-size:0.95rem; letter-spacing:2px; color:#6d28d9; font-weight:700; }
+.form-field input { width:100%; padding:12px 14px; border:1.5px solid #e5e7eb; border-radius:10px; font-size:0.95rem; font-family:'Inter',sans-serif; outline:none; color:#0f2137; transition:border-color 0.2s; }
+.form-field input:focus { border-color:#1b3a5c; }
+.form-field select { width:100%; padding:12px 14px; border:1.5px solid #e5e7eb; border-radius:10px; font-size:0.95rem; font-family:'Inter',sans-serif; outline:none; color:#0f2137; background:white; transition:border-color 0.2s; appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; cursor:pointer; }
+.form-field select:focus { border-color:#1b3a5c; }
+.barcode-display { background:#eff6ff; border:1.5px solid #bfdbfe; border-radius:10px; padding:11px 14px; font-family:monospace; font-size:0.95rem; letter-spacing:2px; color:#1b3a5c; font-weight:700; }
 .modal-actions { display:flex; gap:10px; margin-top:24px; }
-.btn-confirm { flex:2; padding:14px; background:linear-gradient(135deg,#4338ca,#6d28d9); color:white; border:none; border-radius:12px; font-size:0.95rem; font-weight:700; font-family:'Inter',sans-serif; cursor:pointer; box-shadow:0 4px 16px rgba(109,40,217,0.3); }
+.btn-confirm { flex:2; padding:14px; background:linear-gradient(135deg,#1b3a5c,#2563a8); color:white; border:none; border-radius:12px; font-size:0.95rem; font-weight:700; font-family:'Inter',sans-serif; cursor:pointer; box-shadow:0 4px 16px rgba(27,58,92,0.3); }
 .btn-confirm:hover { transform:translateY(-1px); }
 .btn-cancel { flex:1; padding:14px; background:#f3f4f6; color:#6b7280; border:none; border-radius:12px; font-size:0.95rem; font-weight:600; font-family:'Inter',sans-serif; cursor:pointer; }
 .btn-cancel:hover { background:#e5e7eb; }
@@ -216,7 +219,7 @@ tbody tr:hover td { background:#faf5ff; }
 @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
 
 /* TOAST */
-.toast { position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(100px); background:#1e1b4b; color:white; padding:13px 26px; border-radius:40px; font-size:0.88rem; font-weight:600; z-index:999; transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1); white-space:nowrap; box-shadow:0 8px 32px rgba(30,27,75,0.25); }
+.toast { position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(100px); background:#0f2137; color:white; padding:13px 26px; border-radius:40px; font-size:0.88rem; font-weight:600; z-index:999; transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1); white-space:nowrap; box-shadow:0 8px 32px rgba(15,33,55,0.25); }
 .toast.show  { transform:translateX(-50%) translateY(0); }
 .toast.green { background:linear-gradient(135deg,#059669,#10b981); }
 .toast.red   { background:linear-gradient(135deg,#dc2626,#ef4444); }
@@ -225,7 +228,7 @@ tbody tr:hover td { background:#faf5ff; }
 @media(max-width:640px){
   .header-inner { flex-direction:column; align-items:flex-start; padding:20px 16px 18px; }
   .header-left h1 { font-size:1.4rem; }
-  .header-logo { width:40px; height:40px; font-size:1.3rem; }
+  .header-logo { width:52px; height:52px; }
   .header-right { display:flex; flex-wrap:wrap; gap:8px; }
   .stat-pill { display:none; }
   .stats-row { grid-template-columns:1fr 1fr; gap:10px; padding:12px 12px 0; }
@@ -271,35 +274,46 @@ tbody tr:hover td { background:#faf5ff; }
   <div class="login-box">
     <div class="login-logo">📦</div>
     <h1>Victorian Projects</h1>
-    <p>Stock Manager — enter password to continue</p>
-    <input type="password" class="login-input" id="loginInput" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()" />
-    <button class="login-btn" onclick="doLogin()">🔐 Login</button>
-    <div class="login-error" id="loginError">Incorrect password. Please try again.</div>
+    <p style="color:#9ca3af;font-size:0.88rem;margin-bottom:20px;">Stock Manager</p>
+    <div id="staffLoginForm">
+      <input type="text" class="login-input" id="staffNameInput" placeholder="Your name" style="letter-spacing:0;margin-bottom:10px;" onkeydown="if(event.key==='Enter')document.getElementById('staffPinInput').focus()" autocomplete="off" />
+      <input type="password" class="login-input" id="staffPinInput" placeholder="PIN" onkeydown="if(event.key==='Enter')doStaffLogin()" />
+      <button class="login-btn" onclick="doStaffLogin()" style="margin-top:12px;">🔑 Login</button>
+      <div style="margin-top:16px;"><a href="#" onclick="showAdminLogin();return false;" style="color:#9ca3af;font-size:0.8rem;text-decoration:none;">Admin login →</a></div>
+    </div>
+    <div id="adminLoginForm" style="display:none;">
+      <input type="password" class="login-input" id="loginInput" placeholder="Admin password" onkeydown="if(event.key==='Enter')doAdminLogin()" />
+      <button class="login-btn" onclick="doAdminLogin()" style="margin-top:12px;">🔐 Admin Login</button>
+      <div style="margin-top:16px;"><a href="#" onclick="showStaffLogin();return false;" style="color:#9ca3af;font-size:0.8rem;text-decoration:none;">← Staff login</a></div>
+    </div>
+    <div class="login-error" id="loginError"></div>
   </div>
 </div>
 
 <header>
   <div class="header-inner">
     <div class="header-left">
-      <div class="header-logo">📦</div>
+      <div class="header-logo"></div>
       <div class="header-text-group">
         <h1>Victorian Projects</h1>
-        <p>QR Code Stock Manager — scan, track, stay on top</p>
+        <p>QR Code Stock Manager</p>
       </div>
     </div>
     <div class="header-right">
       <div class="stat-pill" id="pillTotal">— <span>items</span></div>
       <div class="stat-pill" id="pillLow" style="display:none">⚠ <span id="pillLowCount">0</span> <span>low</span></div>
-      <div class="sync-pill" id="syncPill" onclick="openSyncModal()" title="Cloud sync status">
+      <div class="sync-pill admin-only" id="syncPill" onclick="openSyncModal()" title="Cloud sync status">
         <span id="syncDot" class="sync-dot grey"></span>
         <span id="syncLabel">Set up sync</span>
       </div>
+      <div class="stat-pill" id="currentUserPill" style="display:none;cursor:default;background:rgba(255,255,255,0.25);">👤 <span id="currentUserName"></span></div>
+      <div class="stat-pill" id="logoutPill" onclick="doLogout()" style="display:none;cursor:pointer;background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);">↩ Logout</div>
     </div>
   </div>
 </header>
 
 <div class="stats-row">
-  <div class="stat-card"><div class="stat-icon purple">📦</div><div class="stat-info"><p>Total Items</p><h3 id="statTotal">0</h3></div></div>
+  <div class="stat-card"><div class="stat-icon blue">📦</div><div class="stat-info"><p>Total Items</p><h3 id="statTotal">0</h3></div></div>
   <div class="stat-card"><div class="stat-icon green">✅</div><div class="stat-info"><p>In Stock</p><h3 id="statInStock">0</h3></div></div>
   <div class="stat-card"><div class="stat-icon orange">⚠️</div><div class="stat-info"><p>Low / Out of Stock</p><h3 id="statLow">0</h3></div></div>
 </div>
@@ -330,11 +344,12 @@ tbody tr:hover td { background:#faf5ff; }
     <button class="btn-close-camera" onclick="closeCamera()">✕ Close Camera</button>
   </div>
 
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
-    <button class="btn-tool" onclick="openAddItem()" style="background:linear-gradient(135deg,#4338ca,#6d28d9);color:white;border-color:#4338ca;font-weight:700;">➕ Add New Item</button>
+  <div id="adminToolbar" class="admin-only" style="display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
+    <button class="btn-tool" onclick="openAddItem()" style="background:linear-gradient(135deg,#1b3a5c,#2563a8);color:white;border-color:#1b3a5c;font-weight:700;">➕ Add New Item</button>
     <button class="btn-tool-menu" onclick="toggleToolMenu()" id="toolMenuBtn">⚙️ Tools <span id="toolMenuArrow">▾</span></button>
+    <button class="btn-tool" onclick="openManageUsers()" style="margin-left:auto;">👥 Manage Users</button>
   </div>
-  <div id="toolMenu" style="display:none;background:white;border:1.5px solid #e5e7eb;border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:0 4px 24px rgba(99,87,210,0.1);">
+  <div id="toolMenu" class="admin-only" style="display:none;background:white;border:1.5px solid #e5e7eb;border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:0 4px 24px rgba(27,58,92,0.1);">
     <div style="font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">Stock Tools</div>
     <div style="display:flex;gap:8px;flex-wrap:wrap;">
       <button class="btn-tool" onclick="openBulkQty()">📦 Bulk Update Qty</button>
@@ -473,9 +488,9 @@ tbody tr:hover td { background:#faf5ff; }
       <label>Alert when stock reaches</label>
       <input type="number" id="alertThreshold" value="5" min="1" max="100" />
     </div>
-    <div style="background:#faf5ff;border:1.5px solid #ddd6fe;border-radius:12px;padding:16px;margin-bottom:16px;">
-      <div style="font-size:0.82rem;font-weight:700;color:#6d28d9;margin-bottom:8px;">📋 One-time EmailJS setup (free):</div>
-      <div style="font-size:0.8rem;color:#7c3aed;line-height:1.9;">
+    <div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:12px;padding:16px;margin-bottom:16px;">
+      <div style="font-size:0.82rem;font-weight:700;color:#1b3a5c;margin-bottom:8px;">📋 One-time EmailJS setup (free):</div>
+      <div style="font-size:0.8rem;color:#2563a8;line-height:1.9;">
         1. Go to <strong>emailjs.com</strong> → Sign Up (free)<br>
         2. Click <strong>Add New Service</strong> → choose <strong>Gmail</strong> → connect your Google account<br>
         3. Copy your <strong>Service ID</strong> (e.g. service_xxxxxx)<br>
@@ -517,7 +532,7 @@ tbody tr:hover td { background:#faf5ff; }
     <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;">
       <button onclick="bulkSelectAll()" style="padding:6px 14px;background:#f3f4f6;border:1.5px solid #e5e7eb;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">Select All</button>
       <button onclick="bulkSelectNone()" style="padding:6px 14px;background:#f3f4f6;border:1.5px solid #e5e7eb;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">Clear All</button>
-      <button onclick="bulkSelectUncategorised()" style="padding:6px 14px;background:#ede9fe;border:1.5px solid #ddd6fe;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;color:#6d28d9;">Uncategorised only</button>
+      <button onclick="bulkSelectUncategorised()" style="padding:6px 14px;background:#dbeafe;border:1.5px solid #bfdbfe;border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;color:#1b3a5c;">Uncategorised only</button>
     </div>
     <div id="bulkItemList" style="max-height:300px;overflow-y:auto;border:1.5px solid #e5e7eb;border-radius:12px;"></div>
     <div class="modal-actions">
@@ -534,13 +549,13 @@ tbody tr:hover td { background:#faf5ff; }
     <h2>Bulk Update Quantities</h2>
     <p>Scan items or type their ID. Set new quantities, then confirm all at once.</p>
     <div style="display:flex;gap:8px;margin-bottom:14px;">
-      <input id="bulkQtyInput" type="text" placeholder="Scan or type item ID / barcode..." style="flex:1;padding:12px 14px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:0.9rem;font-family:Inter,sans-serif;outline:none;color:#1e1b4b;" onkeydown="if(event.key==='Enter') bulkQtyScan()" />
-      <button onclick="bulkQtyScan()" style="padding:12px 18px;background:linear-gradient(135deg,#4338ca,#6d28d9);color:white;border:none;border-radius:10px;font-weight:700;font-family:Inter,sans-serif;cursor:pointer;font-size:0.9rem;">Add</button>
+      <input id="bulkQtyInput" type="text" placeholder="Scan or type item ID / barcode..." style="flex:1;padding:12px 14px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:0.9rem;font-family:Inter,sans-serif;outline:none;color:#0f2137;" onkeydown="if(event.key==='Enter') bulkQtyScan()" />
+      <button onclick="bulkQtyScan()" style="padding:12px 18px;background:linear-gradient(135deg,#1b3a5c,#2563a8);color:white;border:none;border-radius:10px;font-weight:700;font-family:Inter,sans-serif;cursor:pointer;font-size:0.9rem;">Add</button>
     </div>
     <div id="bulkQtyList" style="max-height:320px;overflow-y:auto;border:1.5px solid #e5e7eb;border-radius:12px;margin-bottom:14px;min-height:80px;">
       <div id="bulkQtyEmpty" style="text-align:center;padding:36px;color:#9ca3af;font-size:0.85rem;">Scan an item to get started</div>
     </div>
-    <div id="bulkQtyCount" style="text-align:right;font-size:0.8rem;color:#6d28d9;font-weight:700;margin-bottom:10px;display:none;"></div>
+    <div id="bulkQtyCount" style="text-align:right;font-size:0.8rem;color:#1b3a5c;font-weight:700;margin-bottom:10px;display:none;"></div>
     <div class="modal-actions">
       <button class="btn-confirm" onclick="applyBulkQty()">✅ Confirm All Changes</button>
       <button class="btn-cancel" onclick="closeModal('bulkQtyModal')">Cancel</button>
@@ -575,9 +590,9 @@ tbody tr:hover td { background:#faf5ff; }
       <button class="btn-cancel" onclick="closeModal('syncModal')">Cancel</button>
     </div>
     <div style="margin-top:12px;text-align:center;">
-      <button onclick="pushToCloud()" style="background:none;border:none;color:#6d28d9;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">⬆️ Push to cloud</button>
+      <button onclick="pushToCloud()" style="background:none;border:none;color:#1b3a5c;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">⬆️ Push to cloud</button>
       &nbsp;·&nbsp;
-      <button onclick="pullFromCloud(true)" style="background:none;border:none;color:#6d28d9;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">⬇️ Pull from cloud</button>
+      <button onclick="pullFromCloud(true)" style="background:none;border:none;color:#1b3a5c;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">⬇️ Pull from cloud</button>
       &nbsp;·&nbsp;
       <button onclick="removeSyncUrl()" style="background:none;border:none;color:#ef4444;font-size:0.85rem;font-weight:600;cursor:pointer;font-family:Inter,sans-serif;">✕ Remove sync</button>
     </div>
@@ -682,7 +697,7 @@ function openBulkCat() {
   const keys = Object.keys(stock).sort((a,b)=>stock[a].name.localeCompare(stock[b].name));
   list.innerHTML = keys.map(k=>`
     <label style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid #f3f4f6;cursor:pointer;">
-      <input type="checkbox" class="bulk-cb" data-key="${esc(k)}" style="width:18px;height:18px;accent-color:#6d28d9;cursor:pointer;" />
+      <input type="checkbox" class="bulk-cb" data-key="${esc(k)}" style="width:18px;height:18px;accent-color:#1b3a5c;cursor:pointer;" />
       <span style="flex:1;font-weight:600;font-size:0.9rem;">${esc(stock[k].name)}</span>
       <span style="font-size:0.75rem;color:#9ca3af;">${stock[k].category||'<em>No category</em>'}</span>
     </label>`).join('');
@@ -775,16 +790,16 @@ function renderBulkQtyList() {
   list.innerHTML = keys.map(k => {
     const item = stock[k];
     const changed = bulkQtyItems[k] !== item.qty;
-    return `<div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #f3f4f6;background:${changed?'#faf5ff':'white'};">
+    return `<div style="display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #f3f4f6;background:${changed?'#eff6ff':'white'};">
       <div style="flex:1;min-width:0;">
-        <div style="font-weight:700;font-size:0.88rem;color:#1e1b4b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(item.name)}</div>
+        <div style="font-weight:700;font-size:0.88rem;color:#0f2137;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(item.name)}</div>
         <div style="font-size:0.75rem;color:#9ca3af;">Current qty: <strong>${item.qty}</strong>${item.category?' · '+item.category:''}</div>
       </div>
       <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
         <button onclick="adjustBulkQty('${esc(k)}',-1)" style="width:28px;height:28px;background:#f3f4f6;border:1.5px solid #e5e7eb;border-radius:6px;font-size:1rem;cursor:pointer;font-weight:700;line-height:1;">−</button>
         <input type="number" min="0" value="${bulkQtyItems[k]}"
           oninput="bulkQtyItems['${esc(k)}']=Math.max(0,parseInt(this.value)||0);renderBulkQtyList()"
-          style="width:64px;padding:6px;border:1.5px solid ${changed?'#6d28d9':'#e5e7eb'};border-radius:8px;font-size:0.95rem;font-weight:700;text-align:center;font-family:Inter,sans-serif;outline:none;color:#1e1b4b;" />
+          style="width:64px;padding:6px;border:1.5px solid ${changed?'#1b3a5c':'#e5e7eb'};border-radius:8px;font-size:0.95rem;font-weight:700;text-align:center;font-family:Inter,sans-serif;outline:none;color:#0f2137;" />
         <button onclick="adjustBulkQty('${esc(k)}',1)" style="width:28px;height:28px;background:#f3f4f6;border:1.5px solid #e5e7eb;border-radius:6px;font-size:1rem;cursor:pointer;font-weight:700;line-height:1;">+</button>
       </div>
       <button onclick="removeBulkQtyItem('${esc(k)}')" style="background:none;border:none;color:#d1d5db;font-size:1.1rem;cursor:pointer;padding:4px;flex-shrink:0;" title="Remove">✕</button>
@@ -967,7 +982,48 @@ document.addEventListener('click', function(){
 
 function handleScan(barcode) {
   currentBarcode = barcode;
+  if(currentUser && currentUser.role==='user') {
+    if(stock[barcode]) openTakeModal(barcode);
+    else showToast('Item not found: '+barcode, 'red');
+    return;
+  }
   if(stock[barcode]) openScanModal(barcode); else openNewItemModal(barcode);
+}
+function setTakeQty(n) {
+  document.getElementById('takeQtyInput').value = n;
+  document.querySelectorAll('.take-preset-btn').forEach(b=>b.classList.remove('active'));
+  const map={1:'takePreset1',5:'takePreset5',10:'takePreset10',30:'takePreset30'};
+  if(map[n]) document.getElementById(map[n]).classList.add('active');
+}
+function clearTakePresets() {
+  document.querySelectorAll('.take-preset-btn').forEach(b=>b.classList.remove('active'));
+}
+function openTakeModal(barcode) {
+  const item = stock[barcode];
+  document.getElementById('takeItemName').textContent = item.name;
+  document.getElementById('takeItemQty').textContent = 'Current stock: '+item.qty+' units';
+  const ph = document.getElementById('takeItemPhoto');
+  ph.style.display = item.photo ? 'block':'none';
+  if(item.photo) ph.src = item.photo;
+  document.getElementById('takeQtyInput').value = 1;
+  document.querySelectorAll('.take-preset-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('takePreset1').classList.add('active');
+  document.getElementById('takeModal').classList.add('active');
+  setTimeout(()=>document.getElementById('takeQtyInput').select(),100);
+}
+function confirmTake() {
+  const qty = parseInt(document.getElementById('takeQtyInput').value)||1;
+  const item = stock[currentBarcode];
+  if(!item) return;
+  const prev = item.qty;
+  item.qty = Math.max(0, item.qty - qty);
+  item.updated = new Date().toISOString().slice(0,10);
+  if(!item.takeLog) item.takeLog=[];
+  item.takeLog.push({by:currentUser.name,qty:qty,from:prev,to:item.qty,ts:new Date().toISOString()});
+  save(); updateStats(); renderTable();
+  closeModal('takeModal');
+  showToast('✅ '+currentUser.name+' took '+qty+' × '+item.name, 'green');
+  barcodeInput.focus();
 }
 
 // Scan flow
@@ -1115,7 +1171,7 @@ function renderTable() {
         <td class="td-photo"><div class="photo-cell" onclick="triggerPhotoUpload('${esc(k)}')">${photoHTML}</div></td>
         <td class="td-qr"><div class="qr-cell" id="${qrId}"></div></td>
         <td class="td-name"><span class="item-name-cell">${esc(item.name)}</span>${item.category?`<br><span class="cat-badge">${esc(item.category)}</span>`:''}</td>
-        <td class="td-id"><span class="barcode-cell">${esc(bd)}</span> <span style="font-size:0.8rem;color:#6d28d9;font-weight:700;">Qty: ${item.qty}</span></td>
+        <td class="td-id"><span class="barcode-cell">${esc(bd)}</span> <span style="font-size:0.8rem;color:#1b3a5c;font-weight:700;">Qty: ${item.qty}</span></td>
         <td class="td-qty"><span class="qty-value">${item.qty}</span></td>
         <td class="td-low" style="color:#9ca3af;font-size:0.85rem;">${low!==null?low:'—'}</td>
         <td class="td-status">${badge}</td>
@@ -1240,16 +1296,99 @@ function doOpenPrintWindow(){
 <style>*{box-sizing:border-box;margin:0;padding:0;}body{font-family:Arial,sans-serif;background:white;padding:10mm;}
 .no-print{margin-bottom:8mm;}.grid{display:flex;flex-wrap:wrap;gap:5mm;}
 .label{border:1.5px solid #e5e7eb;border-radius:8px;padding:4mm 5mm;width:60mm;text-align:center;page-break-inside:avoid;}
-.label-name{font-size:8.5px;font-weight:bold;color:#1e1b4b;margin-bottom:3mm;line-height:1.3;min-height:22px;display:flex;align-items:center;justify-content:center;}
+.label-name{font-size:8.5px;font-weight:bold;color:#0f2137;margin-bottom:3mm;line-height:1.3;min-height:22px;display:flex;align-items:center;justify-content:center;}
 .qr-wrap{display:flex;justify-content:center;margin-bottom:2mm;}.qr-wrap canvas,.qr-wrap img{width:40mm!important;height:40mm!important;}
 .label-code{font-size:7.5px;color:#9ca3af;letter-spacing:1px;font-family:monospace;}
 @media print{.no-print{display:none;}body{padding:5mm;}}</style></head><body>
 <div class="no-print">
-  <button onclick="window.print()" style="padding:10px 24px;background:linear-gradient(135deg,#4338ca,#6d28d9);color:white;border:none;border-radius:8px;font-size:14px;cursor:pointer;margin-right:10px;font-weight:700;">🖨 Print QR Labels</button>
+  <button onclick="window.print()" style="padding:10px 24px;background:linear-gradient(135deg,#1b3a5c,#2563a8);color:white;border:none;border-radius:8px;font-size:14px;cursor:pointer;margin-right:10px;font-weight:700;">🖨 Print QR Labels</button>
   <button onclick="window.close()" style="padding:10px 16px;background:#f3f4f6;border:none;border-radius:8px;font-size:14px;cursor:pointer;">Close</button>
 </div>
 <div class="grid">${labelsHTML}</div>
 <script>var codes=${codesJSON};window.onload=function(){codes.forEach(function(item){var el=document.getElementById('qr_'+item.id);if(el)new QRCode(el,{text:item.code,width:150,height:150,correctLevel:QRCode.CorrectLevel.M});});};<\/script>
+
+<!-- TAKE ITEM MODAL (user mode) -->
+<div class="modal-overlay" id="takeModal">
+  <div class="modal" style="max-width:400px;text-align:center;">
+    <div class="modal-header"><h2>📤 Take Item</h2><button class="modal-close" onclick="closeModal('takeModal')">✕</button></div>
+    <div style="padding:24px;">
+      <img id="takeItemPhoto" src="" style="width:80px;height:80px;object-fit:cover;border-radius:12px;margin-bottom:12px;display:none;" />
+      <div id="takeItemName" style="font-size:1.2rem;font-weight:800;color:#0f2137;margin-bottom:6px;"></div>
+      <div id="takeItemQty" style="color:#9ca3af;font-size:0.9rem;margin-bottom:20px;"></div>
+      <label style="display:block;font-size:0.85rem;font-weight:700;color:#374151;margin-bottom:10px;">How many are you taking?</label>
+      <div style="display:flex;gap:8px;margin-bottom:12px;">
+        <button onclick="setTakeQty(1)" class="take-preset-btn" id="takePreset1">1</button>
+        <button onclick="setTakeQty(5)" class="take-preset-btn" id="takePreset5">5</button>
+        <button onclick="setTakeQty(10)" class="take-preset-btn" id="takePreset10">10</button>
+        <button onclick="setTakeQty(30)" class="take-preset-btn" id="takePreset30" style="flex:1.5;">✋ Handful (30)</button>
+      </div>
+      <input type="number" id="takeQtyInput" min="1" value="1" style="width:100%;padding:14px;border:1.5px solid #e5e7eb;border-radius:12px;font-size:1.2rem;text-align:center;font-family:Inter,sans-serif;font-weight:700;outline:none;color:#0f2137;" onkeydown="if(event.key==='Enter')confirmTake()" oninput="clearTakePresets()" />
+      <div style="font-size:0.75rem;color:#9ca3af;margin-top:6px;">or type a custom amount above</div>
+      <button onclick="confirmTake()" style="width:100%;margin-top:16px;padding:16px;background:linear-gradient(135deg,#1b3a5c,#2563a8);color:white;border:none;border-radius:12px;font-size:1rem;font-weight:800;font-family:Inter,sans-serif;cursor:pointer;">✅ Confirm Take</button>
+      <button onclick="closeModal('takeModal')" style="width:100%;margin-top:10px;padding:12px;background:#f3f4f6;color:#374151;border:none;border-radius:12px;font-size:0.9rem;font-weight:600;font-family:Inter,sans-serif;cursor:pointer;">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- MANAGE USERS MODAL (admin only) -->
+<div class="modal-overlay admin-only" id="manageUsersModal">
+  <div class="modal" style="max-width:480px;">
+    <div class="modal-header"><h2>👥 Manage Staff Users</h2><button class="modal-close" onclick="closeModal('manageUsersModal')">✕</button></div>
+    <div style="padding:24px;">
+      <p style="color:#6b7280;font-size:0.85rem;margin-bottom:20px;">Staff can log in with their name and PIN. They can scan items to take stock but cannot edit, delete, or access settings.</p>
+      <div style="background:#f9fafb;border-radius:12px;padding:16px;margin-bottom:20px;">
+        <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">Add New User</div>
+        <div style="display:flex;gap:8px;margin-bottom:10px;">
+          <input type="text" id="newUserName" placeholder="Name (e.g. Lachlan)" style="flex:1;padding:10px 12px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:0.9rem;font-family:Inter,sans-serif;outline:none;color:#0f2137;" autocomplete="off" />
+          <input type="password" id="newUserPin" placeholder="PIN (4+ digits)" style="width:140px;padding:10px 12px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:0.9rem;font-family:Inter,sans-serif;outline:none;color:#0f2137;" />
+        </div>
+        <button onclick="addUser()" style="width:100%;padding:12px;background:linear-gradient(135deg,#1b3a5c,#2563a8);color:white;border:none;border-radius:10px;font-size:0.88rem;font-weight:700;font-family:Inter,sans-serif;cursor:pointer;">➕ Add User</button>
+        <div id="userAddError" style="display:none;color:#ef4444;font-size:0.82rem;font-weight:600;margin-top:8px;"></div>
+      </div>
+      <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">Current Users</div>
+      <div id="userListEl"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- TAKE MODAL (user mode) -->
+<div class="modal-overlay" id="takeModal">
+  <div class="modal" style="max-width:400px;text-align:center;">
+    <div class="modal-header"><h2>📤 Take Item</h2><button class="modal-close" onclick="closeModal('takeModal')">✕</button></div>
+    <div style="padding:24px;">
+      <img id="takeItemPhoto" src="" style="width:80px;height:80px;object-fit:cover;border-radius:12px;margin-bottom:12px;display:none;" />
+      <div id="takeItemName" style="font-size:1.2rem;font-weight:800;color:#0f2137;margin-bottom:6px;"></div>
+      <div id="takeItemQty" style="color:#9ca3af;font-size:0.9rem;margin-bottom:20px;"></div>
+      <label style="display:block;font-size:0.85rem;font-weight:700;color:#374151;margin-bottom:8px;">How many are you taking?</label>
+      <input type="number" id="takeQtyInput" min="1" value="1" style="width:100%;padding:14px;border:1.5px solid #e5e7eb;border-radius:12px;font-size:1.2rem;text-align:center;font-family:Inter,sans-serif;font-weight:700;outline:none;color:#0f2137;" onkeydown="if(event.key==='Enter')confirmTake()" />
+      <button onclick="confirmTake()" style="width:100%;margin-top:16px;padding:16px;background:linear-gradient(135deg,#1b3a5c,#2563a8);color:white;border:none;border-radius:12px;font-size:1rem;font-weight:800;font-family:Inter,sans-serif;cursor:pointer;">✅ Confirm Take</button>
+      <button onclick="closeModal('takeModal')" style="width:100%;margin-top:10px;padding:12px;background:#f3f4f6;color:#374151;border:none;border-radius:12px;font-size:0.9rem;font-weight:600;font-family:Inter,sans-serif;cursor:pointer;">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- MANAGE USERS MODAL (admin only) -->
+<div class="modal-overlay admin-only" id="manageUsersModal">
+  <div class="modal" style="max-width:480px;">
+    <div class="modal-header"><h2>👥 Manage Staff Users</h2><button class="modal-close" onclick="closeModal('manageUsersModal')">✕</button></div>
+    <div style="padding:24px;">
+      <p style="color:#6b7280;font-size:0.85rem;margin-bottom:20px;">Staff can log in with their name and PIN. They can only scan items to take stock — no editing or deleting.</p>
+      <div style="background:#f9fafb;border-radius:12px;padding:16px;margin-bottom:20px;">
+        <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">Add New User</div>
+        <div style="display:flex;gap:8px;margin-bottom:10px;">
+          <input type="text" id="newUserName" placeholder="Name (e.g. Lachlan)" style="flex:1;padding:10px 12px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:0.9rem;font-family:Inter,sans-serif;outline:none;color:#0f2137;" autocomplete="off" />
+          <input type="password" id="newUserPin" placeholder="PIN (4+ digits)" style="width:140px;padding:10px 12px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:0.9rem;font-family:Inter,sans-serif;outline:none;color:#0f2137;" />
+        </div>
+        <button onclick="addUser()" style="width:100%;padding:12px;background:linear-gradient(135deg,#1b3a5c,#2563a8);color:white;border:none;border-radius:10px;font-size:0.88rem;font-weight:700;font-family:Inter,sans-serif;cursor:pointer;">➕ Add User</button>
+        <div id="userAddError" style="display:none;color:#ef4444;font-size:0.82rem;font-weight:600;margin-top:8px;"></div>
+      </div>
+      <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">Current Users</div>
+      <div id="userListEl"></div>
+    </div>
+  </div>
+</div>
+
 </body></html>`); win.document.close();
 }
 
@@ -1279,21 +1418,62 @@ function toggleToolMenu() {
   arrow.textContent = open ? '▴' : '▾';
 }
 
-// PASSWORD
+// AUTH
 const APP_PASS = 'VP@2o2siX';
 const AUTH_KEY = 'vp_auth';
+const USERS_KEY = 'vp_users';
+const SESSION_KEY = 'vp_session_user';
+let currentUser = null;
+
 function checkAuth() {
-  if(localStorage.getItem(AUTH_KEY)===APP_PASS) { startApp(); }
-  else { document.getElementById('loginScreen').classList.add('active'); setTimeout(()=>document.getElementById('loginInput').focus(),100); }
+  if(localStorage.getItem(AUTH_KEY)===APP_PASS){currentUser={name:'Admin',role:'admin'};startApp();return;}
+  try{const saved=localStorage.getItem(SESSION_KEY);if(saved){const u=JSON.parse(saved);const users=JSON.parse(localStorage.getItem(USERS_KEY)||'[]');const found=users.find(x=>x.name===u.name&&x.pin===u.pin);if(found){currentUser={name:found.name,role:'user'};startApp();return;}}}catch(e){}
+  document.getElementById('loginScreen').classList.add('active');showStaffLogin();
 }
-function doLogin() {
-  const val = document.getElementById('loginInput').value;
-  const err = document.getElementById('loginError');
-  if(val===APP_PASS) { localStorage.setItem(AUTH_KEY,APP_PASS); document.getElementById('loginScreen').classList.remove('active'); startApp(); }
-  else { err.style.display='block'; document.getElementById('loginInput').value=''; document.getElementById('loginInput').focus(); }
+function showAdminLogin(){document.getElementById('staffLoginForm').style.display='none';document.getElementById('adminLoginForm').style.display='block';document.getElementById('loginError').style.display='none';setTimeout(()=>document.getElementById('loginInput').focus(),50);}
+function showStaffLogin(){document.getElementById('adminLoginForm').style.display='none';document.getElementById('staffLoginForm').style.display='block';document.getElementById('loginError').style.display='none';setTimeout(()=>document.getElementById('staffNameInput').focus(),50);}
+function doAdminLogin(){
+  const val=document.getElementById('loginInput').value;const err=document.getElementById('loginError');
+  if(val===APP_PASS){localStorage.setItem(AUTH_KEY,APP_PASS);localStorage.removeItem(SESSION_KEY);currentUser={name:'Admin',role:'admin'};document.getElementById('loginScreen').classList.remove('active');startApp();}
+  else{err.style.display='block';err.textContent='Incorrect password.';document.getElementById('loginInput').value='';document.getElementById('loginInput').focus();}
 }
-function startApp() {
-  load(); renderCatFilters(); renderTable(); updateStats(); startAutoSync(); barcodeInput.focus();
+function doStaffLogin(){
+  const name=document.getElementById('staffNameInput').value.trim();const pin=document.getElementById('staffPinInput').value.trim();const err=document.getElementById('loginError');
+  if(!name||!pin){err.style.display='block';err.textContent='Enter your name and PIN.';return;}
+  const users=JSON.parse(localStorage.getItem(USERS_KEY)||'[]');const found=users.find(u=>u.name.toLowerCase()===name.toLowerCase()&&u.pin===pin);
+  if(found){localStorage.setItem(SESSION_KEY,JSON.stringify({name:found.name,pin:found.pin}));localStorage.removeItem(AUTH_KEY);currentUser={name:found.name,role:'user'};document.getElementById('loginScreen').classList.remove('active');startApp();}
+  else{err.style.display='block';err.textContent='Name or PIN not recognised.';document.getElementById('staffPinInput').value='';document.getElementById('staffPinInput').focus();}
+}
+function doLogout(){localStorage.removeItem(AUTH_KEY);localStorage.removeItem(SESSION_KEY);currentUser=null;location.reload();}
+function applyRoleUI(){
+  document.getElementById('currentUserName').textContent=currentUser.name;
+  document.getElementById('currentUserPill').style.display='flex';
+  document.getElementById('logoutPill').style.display='flex';
+  if(currentUser.role==='user'){document.querySelectorAll('.admin-only').forEach(el=>el.style.setProperty('display','none','important'));}
+}
+function startApp(){load();renderCatFilters();renderTable();updateStats();applyRoleUI();if(currentUser&&currentUser.role==='admin')startAutoSync();barcodeInput.focus();}
+
+// USER MANAGEMENT
+function openManageUsers(){renderUserList();document.getElementById('manageUsersModal').classList.add('active');}
+function renderUserList(){
+  const users=JSON.parse(localStorage.getItem(USERS_KEY)||'[]');const ul=document.getElementById('userListEl');
+  if(!users.length){ul.innerHTML='<p style="color:#9ca3af;text-align:center;padding:12px;">No users yet.</p>';return;}
+  ul.innerHTML=users.map((u,i)=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#f9fafb;border-radius:10px;margin-bottom:8px;"><div><strong style="color:#0f2137;">${u.name}</strong> <span style="color:#9ca3af;font-size:0.8rem;">PIN: ${'•'.repeat(u.pin.length)}</span></div><button onclick="deleteUser(${i})" style="background:#fee2e2;border:none;color:#ef4444;border-radius:8px;padding:6px 12px;font-size:0.8rem;font-weight:700;cursor:pointer;">Remove</button></div>`).join('');
+}
+function addUser(){
+  const name=document.getElementById('newUserName').value.trim();const pin=document.getElementById('newUserPin').value.trim();const err=document.getElementById('userAddError');
+  if(!name||!pin){err.style.display='block';err.textContent='Enter name and PIN.';return;}
+  if(pin.length<4){err.style.display='block';err.textContent='PIN must be at least 4 digits.';return;}
+  const users=JSON.parse(localStorage.getItem(USERS_KEY)||'[]');
+  if(users.find(u=>u.name.toLowerCase()===name.toLowerCase())){err.style.display='block';err.textContent='Name already exists.';return;}
+  users.push({name,pin});localStorage.setItem(USERS_KEY,JSON.stringify(users));
+  document.getElementById('newUserName').value='';document.getElementById('newUserPin').value='';err.style.display='none';
+  renderUserList();showToast('✅ User "'+name+'" added','green');
+}
+function deleteUser(i){
+  const users=JSON.parse(localStorage.getItem(USERS_KEY)||'[]');
+  if(!confirm('Remove user "'+users[i].name+'"?'))return;
+  users.splice(i,1);localStorage.setItem(USERS_KEY,JSON.stringify(users));renderUserList();
 }
 checkAuth();
 
@@ -1305,8 +1485,8 @@ checkAuth();
     description: "QR Code Stock Manager for Victorian Projects",
     start_url: ".",
     display: "standalone",
-    background_color: "#4338ca",
-    theme_color: "#4338ca",
+    background_color: "#1b3a5c",
+    theme_color: "#1b3a5c",
     orientation: "portrait-primary",
     icons: [
       { src: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='32' fill='%234338ca'/%3E%3Ctext y='130' x='96' text-anchor='middle' font-size='110'%3E📦%3C/text%3E%3C/svg%3E", sizes: "192x192", type: "image/svg+xml" },
@@ -1327,13 +1507,13 @@ window.addEventListener('beforeinstallprompt', function(e){
   banner.innerHTML = `<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
     <span style="font-size:1.4rem">📱</span>
     <div style="flex:1;min-width:180px;">
-      <div style="font-weight:800;font-size:0.95rem;color:#1e1b4b;">Install as App</div>
+      <div style="font-weight:800;font-size:0.95rem;color:#0f2137;">Install as App</div>
       <div style="font-size:0.78rem;color:#6b7280;margin-top:2px;">Add VP Stock to your home screen for quick access</div>
     </div>
-    <button onclick="installApp()" style="padding:10px 20px;background:linear-gradient(135deg,#4338ca,#6d28d9);color:white;border:none;border-radius:10px;font-weight:700;font-family:Inter,sans-serif;cursor:pointer;font-size:0.88rem;white-space:nowrap;">Install App</button>
+    <button onclick="installApp()" style="padding:10px 20px;background:linear-gradient(135deg,#1b3a5c,#2563a8);color:white;border:none;border-radius:10px;font-weight:700;font-family:Inter,sans-serif;cursor:pointer;font-size:0.88rem;white-space:nowrap;">Install App</button>
     <button onclick="document.getElementById('installBanner').remove()" style="background:none;border:none;color:#9ca3af;cursor:pointer;font-size:1.2rem;padding:4px;">✕</button>
   </div>`;
-  banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:white;padding:16px 20px;box-shadow:0 -4px 24px rgba(30,27,75,0.12);z-index:400;border-top:1px solid #e5e7eb;';
+  banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:white;padding:16px 20px;box-shadow:0 -4px 24px rgba(15,33,55,0.12);z-index:400;border-top:1px solid #e5e7eb;';
   document.body.appendChild(banner);
 });
 function installApp(){
@@ -1341,5 +1521,44 @@ function installApp(){
   deferredPrompt.prompt(); deferredPrompt.userChoice.then(()=>{ deferredPrompt=null; const b=document.getElementById('installBanner'); if(b) b.remove(); showToast('✅ App installed!','green'); });
 }
 </script>
+
+<!-- TAKE ITEM MODAL (user mode) -->
+<div class="modal-overlay" id="takeModal">
+  <div class="modal" style="max-width:400px;text-align:center;">
+    <div class="modal-header"><h2>📤 Take Item</h2><button class="modal-close" onclick="closeModal('takeModal')">✕</button></div>
+    <div style="padding:24px;">
+      <img id="takeItemPhoto" src="" style="width:80px;height:80px;object-fit:cover;border-radius:12px;margin-bottom:12px;display:none;" />
+      <div id="takeItemName" style="font-size:1.2rem;font-weight:800;color:#0f2137;margin-bottom:6px;"></div>
+      <div id="takeItemQty" style="color:#9ca3af;font-size:0.9rem;margin-bottom:20px;"></div>
+      <label style="display:block;font-size:0.85rem;font-weight:700;color:#374151;margin-bottom:8px;">How many are you taking?</label>
+      <input type="number" id="takeQtyInput" min="1" value="1" style="width:100%;padding:14px;border:1.5px solid #e5e7eb;border-radius:12px;font-size:1.2rem;text-align:center;font-family:Inter,sans-serif;font-weight:700;outline:none;color:#0f2137;" onkeydown="if(event.key==='Enter')confirmTake()" />
+      <button onclick="confirmTake()" style="width:100%;margin-top:16px;padding:16px;background:linear-gradient(135deg,#1b3a5c,#2563a8);color:white;border:none;border-radius:12px;font-size:1rem;font-weight:800;font-family:Inter,sans-serif;cursor:pointer;">✅ Confirm Take</button>
+      <button onclick="closeModal('takeModal')" style="width:100%;margin-top:10px;padding:12px;background:#f3f4f6;color:#374151;border:none;border-radius:12px;font-size:0.9rem;font-weight:600;font-family:Inter,sans-serif;cursor:pointer;">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- MANAGE USERS MODAL (admin only) -->
+<div class="modal-overlay admin-only" id="manageUsersModal">
+  <div class="modal" style="max-width:480px;">
+    <div class="modal-header"><h2>👥 Manage Staff Users</h2><button class="modal-close" onclick="closeModal('manageUsersModal')">✕</button></div>
+    <div style="padding:24px;">
+      <p style="color:#6b7280;font-size:0.85rem;margin-bottom:20px;">Staff can log in with their name and PIN. They can scan items to take stock but cannot edit, delete, or access settings.</p>
+      <div style="background:#f9fafb;border-radius:12px;padding:16px;margin-bottom:20px;">
+        <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">Add New User</div>
+        <div style="display:flex;gap:8px;margin-bottom:10px;">
+          <input type="text" id="newUserName" placeholder="Name (e.g. Lachlan)" style="flex:1;padding:10px 12px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:0.9rem;font-family:Inter,sans-serif;outline:none;color:#0f2137;" autocomplete="off" />
+          <input type="password" id="newUserPin" placeholder="PIN (4+ digits)" style="width:140px;padding:10px 12px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:0.9rem;font-family:Inter,sans-serif;outline:none;color:#0f2137;" />
+        </div>
+        <button onclick="addUser()" style="width:100%;padding:12px;background:linear-gradient(135deg,#1b3a5c,#2563a8);color:white;border:none;border-radius:10px;font-size:0.88rem;font-weight:700;font-family:Inter,sans-serif;cursor:pointer;">➕ Add User</button>
+        <div id="userAddError" style="display:none;color:#ef4444;font-size:0.82rem;font-weight:600;margin-top:8px;"></div>
+      </div>
+      <div style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#9ca3af;margin-bottom:12px;">Current Users</div>
+      <div id="userListEl"></div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
+                                                                                                                                                                                                                                          
